@@ -39,7 +39,7 @@ class Man{
         this.init(def,atk,hp);
     }
 
-    // @decorateArmour
+    @decorateArmour
     init(def,atk,hp){
         this.def = def; // 防御值
         this.atk = atk;  // 攻击力
