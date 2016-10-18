@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:uncompressed": "cross-env NODE_ENV=production webpack --config webpack.config.build.js",
     "build:minified": "cross-env NODE_ENV=production webpack --config webpack.config.build.js --minimize",
-    "build": "webpack --config webpack.config.prod.js",
+    "build": "babel-node build.js",
     "start": "babel-node devServer.js"
   },
   "author": "lion",

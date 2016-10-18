@@ -1,15 +1,17 @@
-// import path from 'path';
-// import webpack from 'webpack';
+// import path from "path";
+// import webpack from "webpack";
+// import HtmlWebpackPlugin from "html-webpack-plugin";
+// import OpenBrowserPlugin from "open-browser-webpack-plugin";
 
 var path = require('path');
 var webpack = require('webpack');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+var OpenBrowserPlugin = require('open-browser-webpack-plugin');
 // var autoprefixer = require('autoprefixer');
 
 // const myLocalIP = require('my-local-ip');
 
 const port = 8080;
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 
 const srcPath = path.join(__dirname, 'src');
 const examplePath = path.join(__dirname, 'example');
@@ -29,7 +31,7 @@ const AUTOPREFIXER_BROWSERS = [
 
 // console.log("host:", host);
 //+ host + ':' + port
-module.exports  = {
+module.exports = {
 
     entry: [
         'babel-polyfill',
@@ -54,7 +56,7 @@ module.exports  = {
             {
                 test: /\.jsx?$/,
                 loaders: ['babel'],
-                include: [ path.resolve(__dirname, './src')]
+                include: [path.resolve(__dirname, './src')]
             },
             {
                 test: /\.css$/,
@@ -82,11 +84,11 @@ module.exports  = {
             // 	loader: "file-loader?name=[name].[ext]"
             // },
             {
-            	test: /\.(jpe?g|png|gif|svg)$/i,
-            	loaders: [
-            		'file?hash=sha512&digest=hex&name=[hash].[ext]',
-            		'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
-            	]
+                test: /\.(jpe?g|png|gif|svg)$/i,
+                loaders: [
+                    'file?hash=sha512&digest=hex&name=[hash].[ext]',
+                    'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
+                ]
             }
 
         ],
@@ -94,11 +96,11 @@ module.exports  = {
     },
 
     postcss: function plugins(bundler) {
-        console.log('bundler:',bundler)
+        console.log('bundler:', bundler)
         return [
-            require('postcss-import')({ addDependencyTo: bundler }),
+            require('postcss-import')({addDependencyTo: bundler}),
             require('precss')(),
-            require('autoprefixer')({ browsers: AUTOPREFIXER_BROWSERS }),
+            require('autoprefixer')({browsers: AUTOPREFIXER_BROWSERS}),
         ];
     },
 

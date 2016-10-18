@@ -1,20 +1,19 @@
 
 // require('core-js/fn/object/assign');
 
-const path = require('path');
-const webpack = require('webpack');
-const WebpackDevServer = require('webpack-dev-server');
+import webpack from 'webpack';
+import WebpackDevServer from 'webpack-dev-server';
 
 
 
-const config = require('./webpack.config');
+const {devConfig} = require('./webpack.config');
+console.log('devConfig:',devConfig)
 
-
-new WebpackDevServer(webpack(config), config.devServer)
-    .listen(config.port, '0.0.0.0', function (err) {
+new WebpackDevServer(webpack(devConfig), devConfig.devServer)
+    .listen(devConfig.port, '0.0.0.0', function (err) {
           if (err) {
             console.log(err);
           }
-          console.log('Serving from http://localhost:' + config.port);
+          console.log('Serving from http://localhost:' + devConfig.port);
         }
     );

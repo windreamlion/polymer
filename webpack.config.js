@@ -1,12 +1,12 @@
-import path from 'path';
-import webpack from 'webpack';
+import path from "path";
+import webpack from "webpack";
+import HtmlWebpackPlugin from "html-webpack-plugin";
+import OpenBrowserPlugin from "open-browser-webpack-plugin";
 // var autoprefixer = require('autoprefixer');
 
 // const myLocalIP = require('my-local-ip');
 
 const port = 8080;
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 
 const srcPath = path.join(__dirname, 'src');
 const examplePath = path.join(__dirname, 'example');
@@ -27,27 +27,11 @@ const AUTOPREFIXER_BROWSERS = [
 // console.log("host:", host);
 //+ host + ':' + port
 var config = {
-    port: port,
-    devtool: 'eval',
-    devServer: {
-        // contentBase:'/example/',
-        historyApiFallback: true,
-        stats: {colors: true},
-        publicPath: '/',
-        noInfo: false,
-        port: port,
-        hot: true
-    },
+
     entry: [
-        'webpack-dev-server/client?http://localhost:8080',
-        'webpack/hot/only-dev-server',
-        'babel-polyfill',
-        './src/app'
     ],
 
     output: {
-        path: path.resolve(__dirname, '/dist/'),
-        filename: 'app.js'
     },
 
     resolve: {
@@ -63,7 +47,7 @@ var config = {
             {
                 test: /\.jsx?$/,
                 loaders: ['babel'],
-                include: [ path.resolve(__dirname, './src')]
+                include: [path.resolve(__dirname, './src')]
             },
             {
                 test: /\.css$/,
@@ -91,11 +75,11 @@ var config = {
             // 	loader: "file-loader?name=[name].[ext]"
             // },
             {
-            	test: /\.(jpe?g|png|gif|svg)$/i,
-            	loaders: [
-            		'file?hash=sha512&digest=hex&name=[hash].[ext]',
-            		'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
-            	]
+                test: /\.(jpe?g|png|gif|svg)$/i,
+                loaders: [
+                    'file?hash=sha512&digest=hex&name=[hash].[ext]',
+                    'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
+                ]
             }
 
         ],
@@ -103,20 +87,75 @@ var config = {
     },
 
     postcss: function plugins(bundler) {
-        console.log('bundler:',bundler)
+        // console.log('bundler:', bundler)
         return [
-            require('postcss-import')({ addDependencyTo: bundler }),
+            require('postcss-import')({addDependencyTo: bundler}),
             require('precss')(),
-            require('autoprefixer')({ browsers: AUTOPREFIXER_BROWSERS }),
+            require('autoprefixer')({browsers: AUTOPREFIXER_BROWSERS}),
         ];
     },
 
+    plugins: []
+
+};
+
+export let prodConfig = Object.assign({},config, {
+    entry: [
+        'babel-polyfill',
+        './src/app'
+    ],
+    output: {
+        path: path.resolve(__dirname, 'dist'),
+        filename: 'app.js'
+    },
+    plugins: [
+        new webpack.optimize.UglifyJsPlugin({
+            compressor: {
+                warnings: false,
+            },
+        }),
+        new webpack.optimize.OccurrenceOrderPlugin(),
+
+        new HtmlWebpackPlugin({
+            title: 'Polymer',
+            template: path.join('dist', 'base.ejs'),
+            inject: 'true',
+            filename: 'index.html',
+            chunks: ['src']
+        }),
+        new OpenBrowserPlugin({url: 'index.html'})
+    ],
+    process: true
+});
+
+export let devConfig = Object.assign({},config, {
+    port: port,
+    devtool: 'eval',
+    devServer: {
+        // contentBase:'/example/',
+        historyApiFallback: true,
+        stats: {colors: true},
+        publicPath: '/',
+        noInfo: false,
+        port: port,
+        hot: true
+    },
+    entry: [
+        'webpack-dev-server/client?http://localhost:8080',
+        'webpack/hot/only-dev-server',
+        'babel-polyfill',
+        './src/app'
+    ],
+    output: {
+        path: path.resolve(__dirname, '/dist/'),
+        filename: 'app.js'
+    },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin(),
 
         new HtmlWebpackPlugin({
-            title: 'Post-Canvas',
+            title: 'polymer',
             template: path.join('dist', 'base.ejs'),
             inject: 'true',
             filename: 'index.html',
@@ -124,8 +163,7 @@ var config = {
         }),
         new OpenBrowserPlugin({url: 'http://localhost:' + port})
     ]
-
-};
+});
 //
 // deps.forEach(function (dep) {
 // 	var depPath = path.resolve(nodeModules, dep);
@@ -133,4 +171,4 @@ var config = {
 // 	config.module.noParse.push(depPath);
 // });
 
-module.exports = config;
+// export default [prodConfig, devConfig];
