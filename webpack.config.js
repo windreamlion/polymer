@@ -35,7 +35,7 @@ var config = {
     },
 
     resolve: {
-        extensions: ["", ".jsx", ".js", ".scss"]
+        extensions: ["", ".jsx",".tsx",".ts", ".js"]
         // alias: {
         //     'react-fabricjs': path.join(__dirname, 'src'),
         //     'react-fabricjs/lib': path.join(__dirname, 'src'),
@@ -44,6 +44,7 @@ var config = {
 
     module: {
         loaders: [
+            { test: /\.tsx?$/, loaders: ['babel','ts'], },
             {
                 test: /\.jsx?$/,
                 loaders: ['babel'],
