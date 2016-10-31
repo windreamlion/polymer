@@ -13,10 +13,15 @@
   "author": "lion",
   "license": "ISC",
   "dependencies": {
+    "@types/lodash": "^4.14.37",
     "@types/react": "^0.14.43",
     "@types/react-dom": "^0.14.18",
+    "@types/react-redux": "^4.4.32",
+    "@types/redux": "^3.6.31",
+    "@types/redux-thunk": "^2.1.31",
     "babel-polyfill": "^6.16.0",
     "babel-runtime": "^6.11.6",
+    "gsap": "^1.19.0",
     "isomorphic-style-loader": "0.0.10",
     "lodash": "^4.15.0",
     "normalize.css": "^5.0.0",
@@ -26,7 +31,7 @@
     "react-dom": "^15.3.2",
     "react-event-listener": "^0.2.1",
     "react-redux": "^4.4.5",
-    "redux": "^3.5.2",
+    "redux": "^3.6.0",
     "redux-thunk": "^2.1.0"
   },
   "devDependencies": {

@@ -28,14 +28,12 @@ const AUTOPREFIXER_BROWSERS = [
 //+ host + ':' + port
 var config = {
 
-    entry: [
-    ],
+    entry: [],
 
-    output: {
-    },
+    output: {},
 
     resolve: {
-        extensions: ["", ".jsx",".tsx",".ts", ".js"]
+        extensions: ["", ".tsx", ".ts", ".js", ".jsx"]
         // alias: {
         //     'react-fabricjs': path.join(__dirname, 'src'),
         //     'react-fabricjs/lib': path.join(__dirname, 'src'),
@@ -44,7 +42,7 @@ var config = {
 
     module: {
         loaders: [
-            { test: /\.tsx?$/, loaders: ['babel','ts'], },
+            {test: /\.tsx?$/, loaders: ['babel', 'ts'],},
             {
                 test: /\.jsx?$/,
                 loaders: ['babel'],
@@ -100,7 +98,7 @@ var config = {
 
 };
 
-export let prodConfig = Object.assign({},config, {
+export let prodConfig = Object.assign({}, config, {
     entry: [
         'babel-polyfill',
         './src/app'
@@ -129,7 +127,7 @@ export let prodConfig = Object.assign({},config, {
     process: true
 });
 
-export let devConfig = Object.assign({},config, {
+export let devConfig = Object.assign({}, config, {
     port: port,
     devtool: 'eval',
     devServer: {
