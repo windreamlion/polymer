@@ -8,19 +8,24 @@ import * as ReactDOM from 'react-dom'
 
 // declare var TweenMax:any;
 // import _ from 'lodash';
-import {TweenMax} from './modules/greensock';
+// import {TweenMax} from './greensock';
 // var TweenMax = require("gsap")
 // import TweenMax  from 'gsap';
 
 
 import Dog from './farm/Dog'
+import {TweenMax}  from './modules/greensock/'
 // // import Dog = farm.Dog
 // //
 var dog = new Dog('candy');
 // //
 dog.move();
 
-var obj:any={a:100}
+interface disObj{
+    a:number
+}
+
+var obj:disObj={a:100}
 
 // TweenMax.delayedCall(1,()=>console.log("sfasdfasdf"))
 TweenMax.to(obj,3,{a:200,onUpdate:()=>{console.log(obj.a)},delay:1})
