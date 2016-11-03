@@ -291,9 +291,13 @@ declare namespace greensock {
     interface ScrollToPlugin extends TweenPlugin {
 
     }
+    interface ModifiersPlugin extends TweenPlugin {
+
+    }
     interface TweenPlugin {
         activate(plugins:any[]):boolean;
     }
+
 
 //com.greensock.easing
      var Back:Back;
@@ -328,4 +332,5 @@ declare namespace greensock {
     var RoundPropsPlugin:RoundPropsPlugin;
     var ScrollToPlugin:ScrollToPlugin;
     var TweenPlugin:TweenPlugin;
+    var TweenPlugin:ModifiersPlugin;
 }
