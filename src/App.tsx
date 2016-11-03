@@ -14,7 +14,7 @@ import * as ReactDOM from 'react-dom'
 
 
 import Dog from './farm/Dog'
-import {TweenMax}  from './modules/greensock/'
+import {TimelineMax}  from './modules/greensock/'
 // // import Dog = farm.Dog
 // //
 var dog = new Dog('candy');
@@ -27,8 +27,10 @@ interface disObj{
 
 var obj:disObj={a:100}
 
+var tl:TimelineMax = new TimelineMax({onUpdate:()=>{console.log(obj.a)}});
+tl.to(obj,2,{a:200}).to(obj,3,{a:0});
 // TweenMax.delayedCall(1,()=>console.log("sfasdfasdf"))
-TweenMax.to(obj,3,{a:200,onUpdate:()=>{console.log(obj.a)},delay:1})
+// TweenMax.to(obj,3,{a:200,onUpdate:()=>{console.log(obj.a)},delay:1})
 
 
 let doc = <div>Hello World</div>;
