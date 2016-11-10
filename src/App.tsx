@@ -8,6 +8,8 @@ import Dog from "./farm/Dog";
 import {TweenMax, TimelineMax,ModifiersPlugin} from "./modules/greensock/";
 // import {ModifiersPlugin} from "./modules/greensock/plugins";
 
+import ToolButton from './toolbox/ToolButton';
+
 
 // ModifiersPlugin.activate('ModifiersPlugin');
 // declare var TweenMax:any;
@@ -48,7 +50,7 @@ tl.to(obj, 2, {a: 200}).to(obj, 3, {a: 0})
 // TweenMax.to(obj,3,{a:200,onUpdate:()=>{console.log(obj.a)},delay:1})
 
 
-let doc = <div>Hello World</div>;
+let doc:any = <ToolButton/>;
 
 // console.log(doc)
 
