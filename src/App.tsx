@@ -5,10 +5,13 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import Dog from "./farm/Dog";
-import {TweenMax, TimelineMax,ModifiersPlugin} from "./modules/greensock/";
+import {TweenMax, TimelineMax} from "./modules/greensock/";
+import {Observable} from "rxjs";
+import ToolButton from "./toolbox/ToolButton";
+// import {plunk} from "rxjs/";
 // import {ModifiersPlugin} from "./modules/greensock/plugins";
-
-import ToolButton from './toolbox/ToolButton';
+// import Rx from 'rxjs';
+// import { of } from 'rxjs/observable/of';
 
 
 // ModifiersPlugin.activate('ModifiersPlugin');
@@ -33,7 +36,7 @@ var obj: disObj = {a: 100}
 
 var tl: TimelineMax = new TimelineMax({
     onUpdate: ()=> {
-        console.log(obj.a)
+        // console.log(obj.a)
     }
 });
 tl.to(obj, 2, {a: 200}).to(obj, 3, {a: 0})
@@ -48,9 +51,13 @@ tl.to(obj, 2, {a: 200}).to(obj, 3, {a: 0})
     }));
 // TweenMax.delayedCall(1,()=>console.log("sfasdfasdf"))
 // TweenMax.to(obj,3,{a:200,onUpdate:()=>{console.log(obj.a)},delay:1})
+// var count:Number = 0;
+let observable = Observable.fromEvent(document, 'click')
+    .throttleTime(1000)
+    .pluck('clientX')
+    .subscribe((x)=>console.log("value:", x), null, ()=>console.log("complete"))
 
-
-let doc:any = <ToolButton/>;
+let doc: any = <ToolButton/>;
 
 // console.log(doc)
 

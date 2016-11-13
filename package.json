@@ -13,6 +13,7 @@
   "author": "lion",
   "license": "ISC",
   "dependencies": {
+    "@reactivex/rxjs": "^5.0.0-rc.2",
     "@types/lodash": "^4.14.37",
     "@types/react": "^0.14.43",
     "@types/react-dom": "^0.14.18",
@@ -21,8 +22,6 @@
     "@types/redux-thunk": "^2.1.31",
     "babel-polyfill": "^6.16.0",
     "babel-runtime": "^6.11.6",
-    "gsap": "^1.19.0",
-    "isomorphic-style-loader": "0.0.10",
     "lodash": "^4.15.0",
     "normalize.css": "^5.0.0",
     "pleasejs": "^0.4.2",
@@ -32,7 +31,8 @@
     "react-event-listener": "^0.2.1",
     "react-redux": "^4.4.5",
     "redux": "^3.6.0",
-    "redux-thunk": "^2.1.0"
+    "redux-thunk": "^2.1.0",
+    "rxjs": "^5.0.0-rc.2"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.3",
@@ -64,5 +64,9 @@
     "url-loader": "^0.5.7",
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.16.2"
+  },
+  "repository": {
+    "url": "https://github.com/windreamlion/polymer.git",
+    "type": "git"
   }
 }
