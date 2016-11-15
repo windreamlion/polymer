@@ -12,18 +12,19 @@ import ToolButton from "./toolbox/ToolButton";
 // import {ModifiersPlugin} from "./modules/greensock/plugins";
 // import Rx from 'rxjs';
 // import { of } from 'rxjs/observable/of';
+import {} from 'redux-observable'
 
 
 // ModifiersPlugin.activate('ModifiersPlugin');
-// declare var TweenMax:any;
+// declare let TweenMax:any;
 // import _ from 'lodash';
 // import {TweenMax} from './greensock';
-// var TweenMax = require("gsap")
+// let TweenMax = require("gsap")
 // import TweenMax  from 'gsap'
 
 // // import Dog = farm.Dog
 // //
-var dog = new Dog('candy');
+let dog = new Dog('candy');
 // //
 dog.move();
 
@@ -31,10 +32,10 @@ interface disObj {
     a: number
 }
 
-var obj: disObj = {a: 100}
-// var obj: disObj = {a: 100}
+let obj: disObj = {a: 100}
+// let obj: disObj = {a: 100}
 
-var tl: TimelineMax = new TimelineMax({
+let tl: TimelineMax = new TimelineMax({
     onUpdate: ()=> {
         // console.log(obj.a)
     }
@@ -51,7 +52,7 @@ tl.to(obj, 2, {a: 200}).to(obj, 3, {a: 0})
     }));
 // TweenMax.delayedCall(1,()=>console.log("sfasdfasdf"))
 // TweenMax.to(obj,3,{a:200,onUpdate:()=>{console.log(obj.a)},delay:1})
-// var count:Number = 0;
+// let count:Number = 0;
 let observable = Observable.fromEvent(document, 'click')
     .throttleTime(1000)
     .pluck('clientX')
