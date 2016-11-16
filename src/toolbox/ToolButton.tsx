@@ -18,14 +18,21 @@ function getStyles(props:any){
 
 class ToolButton extends React.PureComponent<any,any>{
 
+    private container:any;
+
     constructor(props){
         super(props);
     }
 
+    componentDidMount(){
+        console.log(this.container);
+}
+
 
     render() {
+
          return(
-             <div style={getStyles(this.props).button}>ToolButts</div>
+             <div style={getStyles(this.props).button} ref={(ref)=>this.container=ref}>ToolButts</div>
          )
 
 
